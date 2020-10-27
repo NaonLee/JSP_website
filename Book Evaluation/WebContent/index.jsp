@@ -31,9 +31,9 @@
 					회원 관리
 				</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown">
-					<a class="dropdown-item" href="#">로그인</a>
-					<a class="dropdown-item" href="#">회원가입</a>
-					<a class="dropdown-item" href="#">로그아웃</a>
+					<a class="dropdown-item" href="userLogin.jsp">로그인</a>
+					<a class="dropdown-item" href="userJoin.jsp">회원가입</a>
+					<a class="dropdown-item" href="userLogout.jsp">로그아웃</a>
 				</div>
 			</li>
 		</ul>
@@ -57,7 +57,38 @@
 			<a class="btn btn-primary mx-1 mt-2" data-toggle="modal" href="#registerModal">등록하기</a>
 			<a class="btn btn-danger mx-1 mt-2" data-toggle="modal" href="#reportModal">신고하기</a>
 		</form>
+		
+			<div class="card bg-light mt-3">
+			<div class="card-header bg-light">
+				<div class="row">
+					<div class="col-8 text-left">오감도&nbsp;<small>이상</small></div>
+					<div class="col-12 text-right">
+						종합<span style="color: red;">100</span>
+					</div>
+				</div>
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">
+					좋은 책이다. &nbsp;<small>(출판국가 아시아)</small>
+				</h5>
+				<p class="card-text">13인의 아해</p>
+				<div class="row">
+					<div class="col-9 text-left">
+						종합 <span style="color: red;">80</span>
+						추천 <span style="color: red;">완전추천</span>
+						문체 <span style="color: red;">A</span>
+						<span style="color: green;">(추천: 15)</span>
+					</div>
+					<div class="col-3 text-right">
+						<a onclick="return confirm('추천하십니까?')" href="./likeAction.jsp?evaluationID=">추천</a>
+						<a onclick="return confirm('삭제하시겠습니까?')" href="./deleteAction.jsp?evaluationID=">삭제</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	
 	</section>
+	
 	
 	<div class="modal fade" id="registerModal" tabindex="=1" role="dialog" aria-labelledby="modal" aria-hidden="true">
 		<div class="modal-dialog">
@@ -127,21 +158,21 @@
 							<div class="form-group col-sm-3">
 								<label>종합</label>
 								<select name="totalScore" class="form-control">
-									<option value="90~100">90~100</option>
-									<option value="80~89">80~89</option>
-									<option value="70~79">70~79</option>
-									<option value="60~69">60~69</option>
-									<option value="~59">~59</option>
+									<option value="A">A</option>
+									<option value="B">B</option>
+									<option value="C">C</option>
+									<option value="D">D</option>
+									<option value="E">E</option>
 								</select>
 							</div>
 							<div class="form-group col-sm-3">
-								<label>추천</label>
+								<label>내용</label>
 								<select name="recommandScore" class="form-control">
-									<option value="완전추천">완전추천</option>
-									<option value="추천">추천</option>
-									<option value="보통">보통</option>
-									<option value="비추천">비추천</option>
-									<option value="완전비추천">완전비추천</option>
+									<option value="A">A</option>
+									<option value="B">B</option>
+									<option value="C">C</option>
+									<option value="D">D</option>
+									<option value="E">E</option>
 								</select>
 							</div>
 							<div class="form-group col-sm-3">
@@ -151,7 +182,17 @@
 									<option value="B">B</option>
 									<option value="C">C</option>
 									<option value="D">D</option>
-									<option value="F">F</option>
+									<option value="E">E</option>
+								</select>
+							</div>
+							<div class="form-group col-sm-3">
+								<label>결말</label>
+								<select name="WritingScore" class="form-control">
+									<option value="A">A</option>
+									<option value="B">B</option>
+									<option value="C">C</option>
+									<option value="D">D</option>
+									<option value="E">E</option>
 								</select>
 							</div>
 						</div>
@@ -165,6 +206,40 @@
 		</div>
 	</div>
 	
+	<div class="modal fade" id="reportModal" tabindex="=1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modal">신고하기</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>				
+				</div>
+				<div class="modal-body">
+					<form action="./reportAction.jsp" method="post">
+						
+						<div class="form-group">
+							<label>신고 제목</label>
+							<input type="text" name="reportTime" class="form-control" maxlength="30">
+						</div>
+						<div class="form-group">
+							<label>신고 내용</label>
+							<textarea name="reportContent" class="form-control" maxlength="2048" style="height: 180px;"></textarea>
+						</div>
+						
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+							<button type="submit" class="btn btn-danger">신고하기</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<footer class="bg-dark mt-4 p-5 text-center" style="color: #FFFFFF;">
+		Copyright &copy; 2020 이나온 All Rights Reserved.
+	</footer>
 	
 	<!-- add JQuery javascript -->
 	<script src="./js/jquery.min.js"></script>
