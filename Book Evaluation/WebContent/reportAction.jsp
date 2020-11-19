@@ -100,5 +100,5 @@
 	script.println("</script>");
 	script.close();
 	return;
-	
+
 %>
