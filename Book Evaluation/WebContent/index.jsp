@@ -22,6 +22,7 @@
 </head>
 
 <body>
+
 <%
 	request.setCharacterEncoding("UTF-8");
 	String genre = "전체";									//to show searched contents only
@@ -38,13 +39,13 @@
 	if(request.getParameter("search") != null){
 		search = (String) request.getAttribute("search");
 	}
-	if(request.getParameter("pageNumber") != null){
+	if(request.getParameter("pageNumber") != null)
 		try{
-			pageNumber = Integer.parseInt(request.getAttribute("pageNumber"));
+			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 	} catch (Exception e){
 		System.out.println("검색 페이지 번호 오류");
 	}
-	}
+	
 			
 			
 	String userID = null;
@@ -357,7 +358,7 @@
 	</div>
 	
 	<footer class="bg-dark mt-4 p-5 text-center" style="color: #FFFFFF;">
-		Copyright &copy; 2020 이나온 All Rights Reserved.
+		Copyright &copy; 2020 Naon All Rights Reserved.
 	</footer>
 	
 	<!-- add JQuery javascript -->

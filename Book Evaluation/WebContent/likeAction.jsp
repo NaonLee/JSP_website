@@ -3,6 +3,7 @@
 <%@ page import="evaluation.EvaluationDAO"%>
 <%@ page import="likey.LikeyDAO"%>
 <%@ page import="java.io.PrintWriter"%>
+
 <%!
 	public static String getClientIP(HttpServletRequest request){
 	String ip = request.getHeader("X-FORWARDED-FOR");

@@ -47,13 +47,13 @@ public class UserDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-				conn = DatabaseUtil.getConnection();
-				pstmt = conn.prepareStatement(SQL);
-				pstmt.setString(1, user.getUserID());
-				pstmt.setString(2, user.getUserPW());
-				pstmt.setString(3, user.getUserEmail());
-				pstmt.setString(4, user.getUserEmailHash());
-				return pstmt.executeUpdate();		
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, user.getUserID());
+			pstmt.setString(2, user.getUserPW());
+			pstmt.setString(3, user.getUserEmail());
+			pstmt.setString(4, user.getUserEmailHash());
+			return pstmt.executeUpdate(); 		
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -64,73 +64,77 @@ public class UserDAO {
 		return -1;	//Fail to register
 	}
 	
-	public String getUserEmail(String userID) {
-		
-		String SQL = "SELECT userEmail FROM USER WHERE userID = ?";
+	public String getUserEmail (String userID) {
+		String sql = "SELECT userEmail FROM user WHERE userID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-				conn = DatabaseUtil.getConnection();
-				pstmt = conn.prepareStatement(SQL);
-				pstmt.setString(1, userID);
-				rs = pstmt.executeQuery();
-				if(rs.next()) {
-					return rs.getString(1);
-				}
-		} catch (Exception e) {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			if(rs.next())
+				return rs.getString(1);
+		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			try{if(conn !=null) conn.close(); } catch (Exception e) {e.printStackTrace();}
-			try{if(pstmt !=null) pstmt.close(); } catch (Exception e) {e.printStackTrace();}
-			try{if(rs !=null) rs.close(); } catch (Exception e) {e.printStackTrace();}
+			try { if(conn != null) conn.close(); }
+			catch (Exception e) { e.printStackTrace(); }
+			try { if(pstmt != null) pstmt.close(); }
+			catch (Exception e) { e.printStackTrace(); }
+			try { if(rs != null) rs.close(); }
+			catch (Exception e) { e.printStackTrace(); }
 		}
-		return null;	//database error
+		return null; 
 	}
 	
-	public boolean getUserEmailChecked(String userID) {
-		String SQL = "SELECT userEmailChecked FROM USER WHERE userID = ?";
+	public boolean getUserEmailChecked (String userID) {
+		String sql = "SELECT userEmailChecked FROM user WHERE userID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-				conn = DatabaseUtil.getConnection();
-				pstmt = conn.prepareStatement(SQL);
-				pstmt.setString(1, userID);
-				rs = pstmt.executeQuery();
-				if(rs.next()) {
-					return rs.getBoolean(1);
-				}
-		} catch (Exception e) {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			if(rs.next())
+				return rs.getBoolean(1);
+		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			try{if(conn !=null) conn.close(); } catch (Exception e) {e.printStackTrace();}
-			try{if(pstmt !=null) pstmt.close(); } catch (Exception e) {e.printStackTrace();}
-			try{if(rs !=null) rs.close(); } catch (Exception e) {e.printStackTrace();}
+			try { if(conn != null) conn.close(); }
+			catch (Exception e) { e.printStackTrace(); }
+			try { if(pstmt != null) pstmt.close(); }
+			catch (Exception e) { e.printStackTrace(); }
+			try { if(rs != null) rs.close(); }
+			catch (Exception e) { e.printStackTrace(); }
 		}
-		return false;	//database error
+		return false; 
 	}
 	
-	
-	public boolean setUserEmailChecked(String userID) {
-		String SQL = "UPDATE USER SET userEmailChecked = true WHERE userID = ?";
+	public boolean setUserEmailChecked (String userID) {
+		String sql = "UPDATE user SET userEmailChecked = true WHERE userID = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-				conn = DatabaseUtil.getConnection();
-				pstmt = conn.prepareStatement(SQL);
-				pstmt.setString(1, userID);
-				pstmt.executeUpdate();
-				return true;
-				
-		} catch (Exception e) {
+			conn = DatabaseUtil.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userID);
+			pstmt.executeUpdate();
+			return true;
+		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			try{if(conn !=null) conn.close(); } catch (Exception e) {e.printStackTrace();}
-			try{if(pstmt !=null) pstmt.close(); } catch (Exception e) {e.printStackTrace();}
-			try{if(rs !=null) rs.close(); } catch (Exception e) {e.printStackTrace();}
+			try { if(conn != null) conn.close(); }
+			catch (Exception e) { e.printStackTrace(); }
+			try { if(pstmt != null) pstmt.close(); }
+			catch (Exception e) { e.printStackTrace(); }
+			try { if(rs != null) rs.close(); }
+			catch (Exception e) { e.printStackTrace(); }
 		}
-		return false;	//database error
+		return false;
 	}
 }

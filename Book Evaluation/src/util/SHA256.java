@@ -10,17 +10,17 @@ public class SHA256 {
 		
 		try {
 			MessageDigest digest = MessageDigest.getInstance("SHA-256");
-			byte[] salt = "This is Salt".getBytes();				//to protect data from hackers
+			byte[] salt = "This is Salt.".getBytes();				//to protect data from hackers
 			digest.reset();
 			digest.update(salt);
 			byte[] chars = digest.digest(input.getBytes("UTF-8"));		//after applying Hash algorithm
 			
-			for(int i = 0; i < chars.length; i++) {						//Byte To String 
+			for(int i = 0; i < chars.length; i++) {					//Byte To String 
 				String hex = Integer.toHexString(0xff & chars[i]);
 				if(hex.length() == 1) result.append("0");
 				result.append(hex);
 			}
-		} catch (Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return result.toString();

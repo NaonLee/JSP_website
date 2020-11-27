@@ -1,19 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="evaluation.EvaluationDTO"%>
-<%@ page import="evaluation.EvaluationDAO"%>
-<%@ page import="util.SHA256"%>
 <%@ page import="java.io.PrintWriter"%>
+<%@ page import="evaluation.*, util.*"%>
 
 <%
 	request.setCharacterEncoding("UTF-8");
 	String userID = null;
-	if(session.getAttribute("userID") != null){
+	if(session.getAttribute("userID") != null) {
 		userID = (String) session.getAttribute("userID");
 	}
-	if(userID == null){
+	if(userID == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("alert('로그인이 필요합니다.');");
+		script.println("alert('로그인을 해주세요.');");
 		script.println("location.href = 'userLogin.jsp';");
 		script.println("</script>");
 		script.close();
@@ -43,7 +41,7 @@
 		try{
 			publishYear = Integer.parseInt(request.getParameter("publishYear"));
 		} catch (Exception e){
-			System.out.println("강의연도 데이터 오류");
+			System.out.println("연도 데이터 오류");
 		}
 	}
 	if(request.getParameter("nationality") != null){
