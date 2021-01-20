@@ -55,9 +55,9 @@
 	
 	String host = "http://localhost:8080/Lecture_Evaluation/";
 	//보내는 사람
-	String from = "gno0929@gmail.com";
+	String from = "#####@gmail.com";
 	//받는 사람
-	String to = "jeenie828@gmail.com";
+	String to = "######@gmail.com";
 	//이메일 제목, 내용
 	String subject = "강의평가 사이트에서 접수된 신고 메일입니다.";
 	String content = "신고자 :" + userID + 
